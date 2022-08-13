@@ -15,6 +15,7 @@ import environ
 import os
 
 from django.urls import reverse_lazy
+from django.contrib import messages
 
 env = environ.Env(
     # set casting, default value
@@ -68,6 +69,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
 
 ROOT_URLCONF = 'pinterest.urls'
 
