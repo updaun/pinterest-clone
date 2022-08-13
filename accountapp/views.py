@@ -27,7 +27,7 @@ def hello_world(request):
         new_hello_world.text = temp
         new_hello_world.save()
 
-        return HttpResponseRedirect(reverse('accountapp:hello_world'))
+        return HttpResponseRedirect(reverse('home'))
     else:
         hello_world_list = HelloWorld.objects.all()
         return render(request, 'accountapp/hello_world.html', context={'hello_world_list':hello_world_list})
@@ -38,7 +38,7 @@ class AccountCreateView(CreateView):
     model = User
     # django에서 제공하는 Form
     form_class = UserCreationForm
-    success_url = reverse_lazy('accountapp:hello_world')
+    success_url = reverse_lazy('home')
     template_name = 'accountapp/create.html'
 
 
@@ -60,7 +60,7 @@ class AccountUpdateView(UpdateView):
     model = User
     context_object_name = 'target_user'
     form_class = AccountUpdateForm
-    success_url = reverse_lazy('accountapp:hello_world')
+    success_url = reverse_lazy('home')
     template_name = 'accountapp/update.html'
 
 @method_decorator(has_ownership, 'get')
